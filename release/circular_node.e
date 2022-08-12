@@ -3,6 +3,7 @@
 
 create
 	make, insert
+	
 
 feature {CIRCULAR_NODE}
 
