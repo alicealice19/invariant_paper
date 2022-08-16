@@ -10,7 +10,9 @@ feature {SUBJECT, OBSERVER}
     ensure post$_1$: cache = subject.value end
 feature cache: INTEGER; subject: SUBJECT
   set_subject (s: SUBJECT)
-        do subject := s
+        do subject.subscribers.search(Current)
+        subject.subscribers.remove
+        subject := s
            s.register_observer(Current)
     ensure post$_1$: subject = s end
 invariant inv$_1$: cache > 0; inv$_2$: cache = subject.value;
