@@ -30,6 +30,8 @@ feature
 
 	set_subject (s: SUBJECT)
 		do
+			subject.subscribers.search(Current)
+			subject.subscribers.remove
 			subject := s
 			s.register_observer (Current)
 		ensure
