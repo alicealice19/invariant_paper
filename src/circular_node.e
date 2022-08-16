@@ -3,6 +3,7 @@
 
 create
 	make, insert
+	
 
 feature {CIRCULAR_NODE}
 
@@ -36,14 +37,11 @@ feature {CIRCULAR_NODE}
 		ensure
 			post_1: left = o
 		end
-
-feature
-
-	value: G
-
-	left, right: CIRCULAR_NODE [G]
-
-	insert (v: G; l, r: CIRCULAR_NODE [G])
+		
+	insert_between_two (v: G; l, r: CIRCULAR_NODE [G])
+		require
+			pre_1: l.right = r
+			pre_2: r.left = l
 		do
 			make (v)
 			l.set_right (Current)
@@ -55,6 +53,12 @@ feature
 			post_2: left = l
 			post_3: right = r
 		end
+
+feature
+
+	value: G
+
+	left, right: CIRCULAR_NODE [G]
 
 	remove (l: CIRCULAR_NODE [G])
 		require
@@ -73,6 +77,11 @@ feature
 		ensure
 			post_1: left = Current
 			post_2: (old left).right = old right
+		end
+		
+	insert_right(v: G; l: CIRCULAR_NODE [G])
+		do 
+			insert_between_two(v, l, l.right)
 		end
 
 invariant
