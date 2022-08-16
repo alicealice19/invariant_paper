@@ -9,6 +9,3 @@ Directory structure:
 	          of EiffelStudio 20.11 to access items being iterated
 	          in the loop
 
-This supplementary material is not a subject for artifact evaluation that
-is submitted separately and includes the code with dynamic checks of the
-proofs included in the article.
